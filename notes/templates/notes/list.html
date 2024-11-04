@@ -1,0 +1,47 @@
+<!-- templates/notes/list_notes.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Notes</title>
+</head>
+<body>
+<h1>List of Notes</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Text</th>
+        <th>Reminder</th>
+        <th>Category</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for note in notes %}
+        <tr>
+            <td>{{ note.title }}</td>
+            <td>{{ note.text }}</td>
+            <td>{{ note.reminder }}</td>
+            <td>{{ note.category.title }}</td>
+            <td>
+                <!-- Edit action -->
+                <a href="{% url 'notes:edit_note' note.id %}">Edit</a>
+                <a href="{% url 'notes:delete_note' note.id %}">Delete</a>
+
+
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4">No notes available.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>
