@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'notes/addstyle.css' %}">
+</head>
+<body>
+<div class="container">
+  <form id="contact" action="{% url 'notes:edit_note' note.id %}" method="post">
+      {% csrf_token %}
+    <h3 Edit </h3>
+
+    <fieldset>
+      <input placeholder="Note Title" type="text" name="title" value="{% if  note %} {{note.title}} {% else %} ''{% endif%} ">
+
+    </fieldset>
+    <fieldset>
+      <input placeholder="Note text" type="text"  name="text" value="{% if  note %} {{note.text}} {% else %} ''{% endif%}" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Note Reminder" type="text" name="reminder" value="{% if  note %} {{note.reminder}} {% else %} ''{% endif%}" tabindex="3" required>
+    </fieldset>
+      <fieldset>
+      <input placeholder="Categories" type="text" name="category" value="{% if  note %} {{note.category}} {% else %} ''{% endif%}" tabindex="4" required>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" >Submit</button>
+    </fieldset>
+  </form>
+
+
+</div>
+</body>
+</html>

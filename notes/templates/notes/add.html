@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'notes/addstyle.css' %}">
+</head>
+<body>
+<div class="container">
+  <form id="contact" action="{% url 'notes:list_notes' %}" method="post">
+      {% csrf_token %}
+    <h3>Add Note</h3>
+
+    <fieldset>
+      <input placeholder="Note Title" type="text" name="title" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Note text" type="text"  name="text" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Note Reminder" type="text" name="reminder" tabindex="3" required>
+    </fieldset>
+      <fieldset>
+      <input placeholder="Categories" type="text" name="category" tabindex="4" required>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" >Submit</button>
+    </fieldset>
+  </form>
+
+
+</div>
+</body>
+</html>
